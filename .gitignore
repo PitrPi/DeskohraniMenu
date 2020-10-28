@@ -1,7 +1,13 @@
+# No need for data file, will be loaded
+games_full_info.csv
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
 *$py.class
+
+# Images/CSS/Assets
+assets
 
 # C extensions
 *.so
@@ -113,6 +119,9 @@ venv.bak/
 # Spyder project settings
 .spyderproject
 .spyproject
+
+# PyCharm folder
+.idea
 
 # Rope project settings
 .ropeproject
