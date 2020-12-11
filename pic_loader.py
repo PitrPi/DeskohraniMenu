@@ -42,11 +42,3 @@ def step():
     out_path = "games_full_info.csv"
     write_final_df(data, out_path)
 
-
-
-if __name__ == '__main__':
-    data = open_data_file(PATH)
-    download_images(data)
-    data = add_internal_link(data)
-    out_path = "games_full_info.csv"
-    write_final_df(data, out_path)

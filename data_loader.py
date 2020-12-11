@@ -74,12 +74,3 @@ def step():
     final_df = pandas.merge(games_df, games_bgg_info, on="bgg_id", how="left")
     write_final_df(final_df, out_path)
 
-
-if __name__ == '__main__':
-    data_path = "table.csv"
-    out_path = "games_full_info.csv"
-    games_df = load_df(data_path)
-    games_df = load_games_id_bgg(games_df, out_path=data_path)
-    games_bgg_info = get_bgg_info(games_df)
-    final_df = pandas.merge(games_df, games_bgg_info, on="bgg_id", how="left")
-    write_final_df(final_df, out_path)
