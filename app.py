@@ -5,7 +5,7 @@ import pandas as pd
 import data_loader
 import pic_loader
 
-
+app = dash.Dash(__name__, assets_folder="assets")
 
 
 def table_type(df_column):
@@ -50,14 +50,14 @@ def prepare_df(path: str) -> pd.DataFrame:
     return data
 
 
-def prepare_app():
+def prepare_app(df):
     app = dash.Dash(__name__, assets_folder="assets")
     app.layout = dash_table.DataTable(
         columns=[
             {'name': i, 'id': i, 'type': table_type(df[i]), 'presentation': 'markdown'} for i in df.columns
         ],
         data=df.to_dict('records'),
-        filter_action='native',
+        # filter_action='native',
 
         css=[{
             'selector': 'table',
@@ -79,10 +79,16 @@ def prepare_app():
     return app
 
 
+@app.callback()
+def filter_data():
+    pass
+
+
+
 if __name__ == '__main__':
     PATH = 'games_full_info.csv'
     data_loader.step()
     pic_loader.step()
-    df = prepare_df(PATH)
-    app = prepare_app()
+    data = prepare_df(PATH)
+    app = prepare_app(data)
     app.run_server(debug=True)
